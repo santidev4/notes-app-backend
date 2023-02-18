@@ -1,0 +1,13 @@
+### Get Categories
+GET http://localhost:3000/categories
+
+### Create Category
+POST http://localhost:3000/categories
+Content-Type: application/json
+
+{
+  "name": "work1"
+}
+
+### Delete a category
+DELETE http://localhost:3000/categories/378437ac-2d05-4148-93bc-1604d84b54af

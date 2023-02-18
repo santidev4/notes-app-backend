@@ -10,10 +10,19 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+// how do i make a relation many to many in this prisma models?
 model Notes {
-  id       String   @id @default(uuid())
-  title    String
-  content  String
-  archived Boolean  @default(false)
-  created  DateTime @default(now())
+  id         String       @id @default(uuid())
+  title      String
+  content    String
+  archived   Boolean      @default(false)
+  created    DateTime     @default(now())
+  updatedAt  DateTime?    @updatedAt
+  categories Categories[]
+}
+
+model Categories {
+  id    String  @id @default(uuid())
+  name  String
+  notes Notes[]
 }

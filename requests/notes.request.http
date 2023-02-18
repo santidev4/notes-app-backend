@@ -1,0 +1,42 @@
+### Get current notes
+GET http://localhost:3000/notes/current
+
+### Get archived notes
+GET http://localhost:3000/notes/archives
+
+### Filter notes by category
+GET http://localhost:3000/notes/filter?category=food
+
+### Create a note
+POST http://localhost:3000/notes/create
+Content-Type: application/json
+
+{
+  "title": "Test note with categories 2",
+  "content": "This is a test note.",
+  "categories": [
+  {
+    "id": "e531aa7f-9166-434f-a7b4-ac7229b5d12e",
+    "name": "food"
+  },
+  {
+    "id": "e6cfa281-c8f6-4a31-b153-a26e76b31910",
+    "name": "work"
+  }
+]
+}
+
+### Archive a current note
+PATCH http://localhost:3000/notes/archive/c5cc7267-9520-49b3-901e-c54a3504d239id
+
+### Unarchive an archived note
+PATCH http://localhost:3000/notes/unarchive/id
+
+### Delete a category from a note
+PATCH  http://localhost:3000/notes/remove?category=food&note=0694dd7d-3cba-4057-a6c3-51a410a9274b
+
+### Add category to a note
+PATCH http://localhost:3000/notes/add?category=e531aa7f-9166-434f-a7b4-ac7229b5d12e&note=0694dd7d-3cba-4057-a6c3-51a410a9274b
+
+### Delete a note
+DELETE http://localhost:3000/notes/id
