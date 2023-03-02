@@ -9,10 +9,10 @@ export class UsersService {
   constructor(private prisma: PrismaService) {}
 
   async createUser(data: Prisma.UserCreateInput): Promise<User> {
+    // TODO add sessionID?
     try {
       const { password, ...rest } = data
       const hashedPassword = await argon2.hash(password)
-      console.log(hashedPassword)
       const newUser = await this.prisma.user.create({
         data: {
           ...rest,
@@ -37,7 +37,7 @@ export class UsersService {
       if (passwordCorrect)
         await this.prisma.user.update({
           where: { id: user.id },
-          data: { sessionId: req.sessionId },
+          data: { sessionId: req.sessionID },
         })
       return req.session
     } catch (error) {

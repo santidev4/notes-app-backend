@@ -19,6 +19,8 @@ model Notes {
   created    DateTime     @default(now())
   updatedAt  DateTime?    @updatedAt
   categories Categories[]
+  user       User?        @relation(fields: [userEmail], references: [email])
+  userEmail  String
 }
 
 model Categories {
@@ -30,12 +32,14 @@ model Categories {
 model User {
   id        String   @id @default(uuid())
   email     String   @unique
-  password  String
+  password  String?
   name      String   @unique
   session   Session? @relation(fields: [sessionId], references: [sid], onUpdate: Cascade)
-  sessionId String? @unique
+  sessionId String?  @unique
+  notes     Notes[]
 }
-  model Session {
+
+model Session {
   id        String   @id
   sid       String   @unique
   data      String

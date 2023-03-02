@@ -16,10 +16,6 @@ Content-Type: application/json
   "content": "This is a test note.",
   "categories": [
   {
-    "id": "e531aa7f-9166-434f-a7b4-ac7229b5d12e",
-    "name": "food"
-  },
-  {
     "id": "e6cfa281-c8f6-4a31-b153-a26e76b31910",
     "name": "work"
   }
